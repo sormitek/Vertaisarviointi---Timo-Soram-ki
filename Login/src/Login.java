@@ -1,32 +1,31 @@
-import java.nio.CharBuffer;
 import java.util.Scanner;
 
 public class Login {
     public static void käyttäjänimi(String Nimi, String SNimi){
         String N = "";
         String SN = "";
-        //Etunimestä otetaan max. 4 ensimmäistä kirjainta.
+        //Etunimestä otetaan 4 ensimmäistä kirjainta.
         if (Nimi.length() > 4){
             N = Nimi.substring(Nimi.length() + 4);                
         }
             else{
                 N = Nimi;
             }   
-        //Sukunimestä otetaan max. 4 viimeistä kirjainta.
+        //Sukunimestä otetaan 4 viimeistä kirjainta.
             if (SNimi.length() > 4){
             SN = SNimi.substring(SNimi.length() - 4);                
         }
             else{
                 SN = SNimi;
             }     
-        //Käyttäjän syöte muutetaan pieniksi kirjaimiksi täysin.
+        //Generoitu käyttäjänimi tulostetaan pienin kirjaimin käyttäjän syötteestä riippumatta.
         //Tulostus EI pidä Ä, Ö yms.
             System.out.print("Käyttäjänimesi on: '");
             System.out.println(N.toLowerCase()+SN.toLowerCase()+"'");
         }
     public static void sposti(String Nimi, String SNimi, String Vtunnus){ 
             //Nimet muutetaan pieniksi kirjaimiksi ja väliin laitetaan piste.
-            //Verkkotunnus käytetään sellaisenaan.     
+            //Verkkotunnus käytetään sellaisenaan, väliin lisätään @.     
             System.out.print("Sähköpostiosoitteesi on: ");
             System.out.println(Nimi.toLowerCase()+"." + SNimi.toLowerCase() + "@" + Vtunnus);
         }
@@ -35,16 +34,19 @@ public class Login {
     
     public static void main(String[] args) throws Exception {
         Scanner kysy = new Scanner(System.in);
-        //Ä, Ö, Å ja muut erikoisaakkoset eivät tulostu oikein.
-        System.out.println("!!Käytä Ä ja Å tilalla A, ja Ö tilalla O!!");
+// Käyttäjänimen ja sähköpostin generointi toteutettu metodeilla "käyttäjänimi" ja "sposti".
+// Ä, Ö, Å ja muut erikoisaakkoset eivät tulostu oikein.
+// Nimien tulee olla väh. 4 merkkiä pitkiä.
+        System.out.println(".:!Käytä Ä ja Å tilalla A, ja Ö tilalla O!:.");
         System.out.println("Nimen ja sukunimen tulee olla vähintään 4-merkkiä pitkä.");
-        System.out.println("Anna etunimi:");
-            String Enimi = kysy.nextLine();
-        System.out.println("Anna Sukunimi");
-            String Snimi = kysy.nextLine();
-        System.out.println("Anna verkkotunnus:");
-            String VT = kysy.nextLine();
-        if (Enimi.equals("") || Snimi.equals("")){
+            System.out.println("Anna etunimi:");
+                String Enimi = kysy.nextLine();
+            System.out.println("Anna Sukunimi:");
+                String Snimi = kysy.nextLine();
+            System.out.println("Anna yrityksen verkkotunnus:");
+                String VT = kysy.nextLine();
+// Tyhjä kenttä tai liian lyhyt nimi ilmoittaa virheestä ja sulkee ohjelman.
+            if (Enimi.equals("") || Snimi.equals("")){
             System.out.println("Virhe, jokin tiedoista puuttui!");
             System.exit(1);
         }
